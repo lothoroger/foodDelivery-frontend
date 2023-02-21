@@ -1,0 +1,55 @@
+<nav class="navbar navbar-expand-lg bg-dark ">
+    <a class="navbar-brand" href="#"><img src="assets/images/fdlogo.png" alt="lothor">
+        Food Delivery Online</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+        aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto">
+            <li class="nav-item active">
+                <a class="nav-link" routerLink="/home">Home <span class="sr-only">(current)</span></a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" routerLink="/orders">Order Here</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" routerLink="/cart">Cart</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" routerLink="/payment">Payment</a>
+            </li>
+
+
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toogle" href="/login" id="navbarDropdown" role="button"
+                    data-bs-toggle="dropdown" aria-expanded="false">LOGIN or Register</a>
+                <div class="dropdown-menu" aria-labeledby="navbarDropdown">
+                    <a class="dropdown-item" routerLink="/login">Login/Register </a>
+                    <a class="dropdown-item" routerLink="/password">Change Password</a>
+                </div>
+            </li>
+            
+            <li class="nav-item dropdown" *ngIf="IsAdmin">
+                <a class="nav-link dropdown-toogle" href="/login" id="navbarDropdown" role="button"
+                    data-bs-toggle="dropdown" aria-expanded="false">Administrator</a>
+                <div class="dropdown-menu" aria-labeledby="navbarDropdown">
+                    <a class="dropdown-item" routerLink="/customers">Customers</a>
+                    <a class="dropdown-item" routerLink="/cuisines">Cuisines</a>
+                </div>
+            </li>
+              <li *ngIf="IsLogin">
+                <p (click) ="logout();">(LogOut)</p>
+              </li>
+        </ul>
+
+    </div>
+
+    <form class="form-inline my-2 my-lg-0">
+
+        <input class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search"><button
+            class="btn btn-outline-primary my-2 my-sm-0" type="submit">Search</button>
+    </form>
+
+</nav>

@@ -1,0 +1,18 @@
+#bg {
+    /* background: linear-gradient(to bottom right"," #09172c"," #21438b); */
+    background: rgb(13, 13, 49);
+    /* Standard syntax (must be last) */
+}
+
+.form-group .input-group .input[type="text"]:focus {
+    border: none !important;
+    outline: none !important;
+}
+
+.card {
+    border: 3px solid rgba(13"," 28"," 94"," 0.125);
+    border-radius: 0rem;
+}
+#toast-container > div {
+    opacity: 1;
+}

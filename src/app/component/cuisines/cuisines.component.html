@@ -1,0 +1,110 @@
+<div class="container-fluid py-3">
+    <div class="row w-100 m-0">
+        <div class="col">
+            <div class="card shadow-sm">
+                <div class="card-header bg-white border-0">
+                    <div row="0">
+                        <div class="col-12 col-sm-6">
+                            <h4>Cuisines</h4>
+                     
+                                <button class="btn btn-md btn-outline-primary" (click)="openModal(foodModal,null)"><i id="myicon" clas="fa fa-user"></i>Add New Cuisine
+                                   </button>
+                        </div>
+                    </div>
+
+                    <div class="table-responsive">
+                        <table class="table table-flush m-0">
+                            <thead class="thead-light">
+                                <tr>
+                                    <th scope="col">Sr. No</th>
+                                    <th scope="col">Name</th>
+                                    <th scope="col">Origin</th>
+                                    <th scope="col">Price</th>
+                                    <th scope="col">Available</th>
+                                    <th scope="col">As of</th>
+                                    <th scope="col">Image</th>
+                                    <th scope="col">Maintain</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+
+                                <tr *ngFor="let food of foodlist">
+                                    <td>{{ food["id"]}}</td>
+                                    <td>{{ food["name"] }}</td>
+                                    <td>{{ food["origin"] }}</td>
+                                    <td>{{ food["price"] }}</td>
+                                    <td>{{ food["available"] }}</td>
+                                    <td>{{ food["addedon"] }}</td>
+                                    <td><img src="/assets/images/{{ food['image'] }}.jpg">
+                                    </td>
+                                    <td>
+                                        <button type="button" class="btn btn-sm btn-primary"
+                                            (click)="openModal(foodModal, food)">Update Cuisine</button>
+                                        &nbsp;&nbsp; <button type="button" class="btn btn-sm btn-warning"
+                                            (click)="deleteCuisine(food.id)">Delete
+                                            Cuisine</button> 
+                                        &nbsp;&nbsp; <button type="button" class="btn btn-sm btn-warning"
+                                            (click)="openModal(foodModal,null)">Add Cuisine
+                                            Cuisine</button>    
+                                       
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<ng-template #foodModal let-modal class="modal-backdrop">
+
+    <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Cuisine {{ updation ? 'Update' : 'Create' }}</h5 >
+        <button type="button" class="btn-close" (click)="modal.dismiss('Cross click')" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+    <div class="modal-body">
+        <form [formGroup]="foodForm"  ngNativeValidate >
+            <div class="form-group col mt-2">
+                <label for="name">Name</label>
+                <input type="text" formControlName="name" class="form-control">
+            </div>
+
+            <div class="form-group col mt-2">
+                <label for="name">Origin</label>
+                <input type="text" class="form-control" formControlName="origin">
+            </div>
+            <div class="form-group col mt-2">
+                <label for="name">Price</label>
+                <input type="number" class="form-control" formControlName="price">
+            </div>
+            <div class="form-group col mt-2">
+                <label for="name">Available (true or false)</label>
+                <input type="text" class="form-control" formControlName="available">
+            </div>
+            <div class="form-group col mt-2">
+                <label for="name">Added On</label>
+                <input type="text" class="form-control" formControlName="addedon">
+            </div>
+            <div class="form-group col mt-2">
+                <label for="name">Image filename</label>
+                <input type="text" class="form-control" formControlName="image">
+            </div>
+            <div class="form-group col mt-2">
+                <label for="imageFile">Select Image File</label>
+                <input type="file" class="form-control" name="fimage">
+            </div>
+        </form> 
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-default btn-sm" (click)="modal.dismiss('')">
+            Cancel
+        </button>
+        <button type="button" class="btn btn-primary" (click)="saveCuisine()">Save</button> 
+    </div>
+
+</ng-template>

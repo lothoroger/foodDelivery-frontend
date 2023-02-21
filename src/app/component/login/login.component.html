@@ -1,0 +1,47 @@
+<div class="container-fluid vh-100">
+    <div class="row" style="height: inherit;">
+        <div class="col-12 col-sm-6 d-flex flex-column justify-content-center align-items-start px-4" id="bg">
+            <h3 class="text-white text-uppercase m-0 mb-1" name="login">Welcome</h3>
+            <p class="m-0 text-white h5">Existing and New Account Dashboard</p>
+            <ul class="list-group mt-5 text-white" style="list-style-type: none; margin: 0; padding: 0;">
+                <li><b>Customer</b></li>
+                <li>&nbsp;Auto-fill detail for payment</li>
+                <li>&nbsp;<a href="/register?role=Customer">Register here New Customer</a></li>
+            </ul>
+            <ul class="list-group mt-5 text-white" style="list-style-type: none; margin: 0; padding: 0;">
+                <li><b>Administrator</b></li>
+                <li>&nbsp;Manage Orders and Menu Cuisines</li>
+                <li>&nbsp;<a href="/register?role=Admin">Register here for New Administrator</a></li>
+                <li>&nbsp;Login is necessary to be able to perform maintenance</li>
+
+            </ul>
+        </div>
+        <div class="col-12 col-sm-6 d-flex flex-column justify-content-center align-items-center">
+            <div class="card w-75 shadow-sm">
+                <div class="card-header bg-white border-0">
+                    <h3 class="text-center m-0">Login</h3>
+                </div>
+                <div class="card-body">
+                    <form [formGroup]="loginForm" (ngSubmit)="handleLogin()">
+                        <div class="form-group col-12 mt-2">
+                            <label for="email">Email address</label>
+                            <input type="email" class="form-control"  formControlName="email"  id="exampleInputEmail1">
+                 <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone
+                                else.</small>
+                        </div>
+                        <div class="form-group col-12 mt-2">
+                            <label for="password">Password</label>
+                            <input type="password" class="form-control"  formControlName="password"  id="exampleInputPassword1">
+                
+                        </div>
+                        <p class="alert alert-danger text-center h6 mt-2" *ngIf="errorMsg !== undefined"> {{ errorMsg }}
+                        </p> <br />
+                        <p><a href="/password">Forgot Password?</a></p>
+
+                        <br /><button type="submit" class="btn btn-primary">Submit</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
